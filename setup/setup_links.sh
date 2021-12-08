@@ -13,12 +13,12 @@ ln -sf "$DOTFILES_PATH/vim/vimrc" "$HOME_FOLDER/.config/nvim/init.vim"
 ln -sf "$DOTFILES_PATH/vim/coc-settings.json" "$HOME_FOLDER/.config/nvim/coc-settings.json"
 
 # termite / kitty / alacritty
-mkdir -p $HOME_FOLDER/.config/termite
-ln -sf $DOTFILES_PATH/misc/termite $HOME_FOLDER/.config/termite/config
-mkdir -p $HOME_FOLDER/.config/kitty
-ln -sf $DOTFILES_PATH/misc/kitty.conf $HOME_FOLDER/.config/kitty/kitty.conf
-mkdir -p $HOME_FOLDER/.config/alacritty
-ln -sf $DOTFILES_PATH/misc/alacritty.yml $HOME_FOLDER/.config/alacritty/alacritty.yml
+#mkdir -p $HOME_FOLDER/.config/termite
+#ln -sf $DOTFILES_PATH/misc/termite $HOME_FOLDER/.config/termite/config
+#mkdir -p $HOME_FOLDER/.config/kitty
+#ln -sf $DOTFILES_PATH/misc/kitty.conf $HOME_FOLDER/.config/kitty/kitty.conf
+#mkdir -p $HOME_FOLDER/.config/alacritty
+#ln -sf $DOTFILES_PATH/misc/alacritty.yml $HOME_FOLDER/.config/alacritty/alacritty.yml
 
 # tmux
 ln -sf "$DOTFILES_PATH/tmux/tmux.conf" "$HOME_FOLDER/.tmux.conf"
@@ -48,5 +48,5 @@ ln -sf "$DOTFILES_PATH/ranger/rc.conf" "$HOME_FOLDER/.config/ranger/rc.conf"
 ln -sf "$DOTFILES_PATH/ranger/scope.sh" "$HOME_FOLDER/.config/ranger/scope.sh"
 
 # rofi
-mkdir -p "$HOME_FOLDER/.config/rofi"
-ln -sf "$DOTFILES_PATH/misc/rofi" "$HOME_FOLDER/.config/rofi/config"
+#mkdir -p "$HOME_FOLDER/.config/rofi"
+#ln -sf "$DOTFILES_PATH/misc/rofi" "$HOME_FOLDER/.config/rofi/config"

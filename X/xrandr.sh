@@ -49,22 +49,13 @@ then
       ACTION="internal"
     fi
   fi
-elif echo $HOSTNAME | grep desktop > /dev/null || echo $HOST | grep desktop > /dev/null
-then
+else
   # Desktop
-  MONITOR1=$(xrandr -q | grep DVI | grep connected | awk '{print $1}')
+  MONITOR1=$(xrandr -q | grep default | grep connected | awk '{print $1}')
   RESOLUTION1="1920x1080"
-  MONITOR2=$(xrandr -q | grep HDMI | grep connected | awk '{print $1}')
-  RESOLUTION2="1920x1080"
   if [ "$ACTION" = "auto" ] ; then
     ACTION="mirror"
   fi
-else
-  # T440p
-  MONITOR1=$(xrandr -q | grep eDP | awk '{ print $1 }')
-  RESOLUTION1="1920x1080"
-  MONITOR2=$(xrandr -q | grep DP | grep -v eDP | grep -v disconnected | awk '{print $1}')
-  RESOLUTION2="1920x1080"
 fi
 
 # Check if need to enable monitor 1.

@@ -1,5 +1,5 @@
 #!/bin/zsh
-PICTURE_FOLDER=/home/eggerk/Pictures/wallpapers
+PICTURE_FOLDER=/home/tony/Documents/mypics/
 echo "Running feh..."
 feh --bg-fill --randomize $PICTURE_FOLDER &
 if [ $1 ] ; then

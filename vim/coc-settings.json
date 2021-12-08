@@ -1,8 +1,10 @@
 {
-  "coc.preferences.rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".hg/"],
+  "coc.preferences.rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".hg/", ".git", ".venv"],
   "diagnostic.errorSign": "✖",
   "diagnostic.infoSign": "ℹ",
   "diagnostic.hintSign": "➤",
+  "python.jediEnabled": true,
+  "python.pythonPath" : "/home/tony/anaconda3/envs/flightmare/bin/python",
   "languageserver": {
     "clangd": {
       "command": "clangd-9",

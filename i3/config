@@ -4,8 +4,8 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-set $dotfiles_path /home/eggerk/dotfiles
-set $terminal /home/eggerk/dotfiles/tools/i3-sensible-terminal
+set $dotfiles_path /home/tony/dotfiles
+set $terminal terminator
 
 # i3 config file (v4) #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -32,17 +32,18 @@ floating_modifier $mod
 
 # Start a terminal.
 bindsym $mod+Return exec $terminal
-bindsym Ctrl+$mod+j exec $terminal
+#bindsym Ctrl+$mod+j exec $terminal
 
 # Kill focused window.
 bindsym $mod+Shift+q kill
 # The middle button over a titlebar kills the window
 bindsym --release Shift+button2 kill
 
-# Rofi.
-bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,window -show drun -fuzzy"
-bindsym $mod+x exec --no-startup-id "rofi -show window"
-bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
+# synapse.
+bindsym $mod+d exec synapse
+#bindsym $mod+d exec --no-startup-id "rofi -modi drun,run,window -show drun -fuzzy"
+#bindsym $mod+x exec --no-startup-id "rofi -show window"
+#bindsym $mod+c exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # Change focus.
 bindsym $mod+h focus left
@@ -134,33 +135,33 @@ bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # Move workspace to other monitor.
-bindsym $mod+Shift+m move workspace to output right
-
-set $monitor_mode "Monitors: [1] auto, [2] internal only, [3] external only, [4] expand, [5] mirror"
-bindsym $mod+m mode $monitor_mode
-mode  $monitor_mode{
-  bindsym 1 exec $dotfiles_path/X/xrandr.sh auto ; mode "default"
-  bindsym 2 exec $dotfiles_path/X/xrandr.sh internal ; mode "default"
-  bindsym 3 exec $dotfiles_path/X/xrandr.sh external ; mode "default"
-  bindsym 4 exec $dotfiles_path/X/xrandr.sh expand ; mode "default"
-  bindsym 5 exec $dotfiles_path/X/xrandr.sh mirror ; mode "default"
-
-  # Back to normal: Enter or Escape.
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $mod+m mode "default"
-}
-
-exec i3 workspace $workspace1
+#bindsym $mod+Shift+m move workspace to output right
+#
+#set $monitor_mode "Monitors: [1] auto, [2] internal only, [3] external only, [4] expand, [5] mirror"
+#bindsym $mod+m mode $monitor_mode
+#mode  $monitor_mode{
+#  bindsym 1 exec $dotfiles_path/X/xrandr.sh auto ; mode "default"
+#  bindsym 2 exec $dotfiles_path/X/xrandr.sh internal ; mode "default"
+#  bindsym 3 exec $dotfiles_path/X/xrandr.sh external ; mode "default"
+#  bindsym 4 exec $dotfiles_path/X/xrandr.sh expand ; mode "default"
+#  bindsym 5 exec $dotfiles_path/X/xrandr.sh mirror ; mode "default"
+#
+#  # Back to normal: Enter or Escape.
+#  bindsym Return mode "default"
+#  bindsym Escape mode "default"
+#  bindsym $mod+m mode "default"
+#}
+#
+#exec i3 workspace $workspace1
 
 # Spotify, clementine on workspace 10.
-assign [class="Clementine"] $workspace10
-assign [class="Spotify"] $workspace10
-assign [class="Steam"] $workspace2
-for_window [class="Spotify"] move to workspace $workspace10
-for_window [class="LineAttack"] floating enable
-for_window [class="[Ss]we"] floating enable
-for_window [instance="origin.exe"] floating enable
+#assign [class="Clementine"] $workspace10
+#assign [class="Spotify"] $workspace10
+#assign [class="Steam"] $workspace2
+#for_window [class="Spotify"] move to workspace $workspace10
+#for_window [class="LineAttack"] floating enable
+#for_window [class="[Ss]we"] floating enable
+#for_window [instance="origin.exe"] floating enable
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
@@ -206,26 +207,26 @@ bindsym $mod+r mode "resize"
 client.background #2B2C2B
 
 # Gaps.
-for_window [class="^.*"] border pixel 2
-for_window [class="Xfce4-notifyd"] border pixel 0
-smart_gaps inverse_outer
-exec_always $dotfiles_path/i3/set_gaps.sh
-gaps inner 5
-gaps outer 3
-
-set $gaps_mode "Gaps: [S] Disable smart gaps, [s] Enable smart gaps, [,] Small gaps, [.] Large gaps, [<] Small gaps all, [>] Large gaps all"
-mode $gaps_mode {
-  bindsym Shift+s      gaps horizontal current set 0 ; mode "default"
-  bindsym s            gaps horizontal current set 100 ; mode "default"
-  bindsym comma  gaps outer current set 3; gaps horizontal current set 0; gaps inner current set 5 ; mode "default"
-  bindsym period gaps outer current set 0; gaps horizontal current set 100; gaps inner current set 12; mode "default"
-  bindsym Shift+comma  gaps outer all set 3; gaps horizontal all set 0; gaps inner all set 5 ; mode "default"
-  bindsym Shift+period gaps outer all set 0; gaps horizontal all set 100; gaps inner all set 12; mode "default"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-  bindsym $mod+g mode "default"
-}
-bindsym $mod+g mode $gaps_mode
+#for_window [class="^.*"] border pixel 2
+#for_window [class="Xfce4-notifyd"] border pixel 0
+#smart_gaps inverse_outer
+#exec_always $dotfiles_path/i3/set_gaps.sh
+#gaps inner 5
+#gaps outer 3
+#
+#set $gaps_mode "Gaps: [S] Disable smart gaps, [s] Enable smart gaps, [,] Small gaps, [.] Large gaps, [<] Small gaps all, [>] Large gaps all"
+#mode $gaps_mode {
+#  bindsym Shift+s      gaps horizontal current set 0 ; mode "default"
+#  bindsym s            gaps horizontal current set 100 ; mode "default"
+#  bindsym comma  gaps outer current set 3; gaps horizontal current set 0; gaps inner current set 5 ; mode "default"
+#  bindsym period gaps outer current set 0; gaps horizontal current set 100; gaps inner current set 12; mode "default"
+#  bindsym Shift+comma  gaps outer all set 3; gaps horizontal all set 0; gaps inner all set 5 ; mode "default"
+#  bindsym Shift+period gaps outer all set 0; gaps horizontal all set 100; gaps inner all set 12; mode "default"
+#  bindsym Return mode "default"
+#  bindsym Escape mode "default"
+#  bindsym $mod+g mode "default"
+#}
+#bindsym $mod+g mode $gaps_mode
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available).
@@ -244,7 +245,7 @@ bar {
     urgent_workspace   #16a085 #FDF6E3 #E5201D
   }
   position bottom
-  font pango:Ubuntu 10, FontAwesome 10
+  font pango:Ubuntu 14, FontAwesome 14
   status_command i3status
 }
 
@@ -252,34 +253,34 @@ bar {
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 # exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
+#bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 # Start Applications
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec $terminal -e 'ranger'
+#bindsym $mod+F2 exec firefox
+#bindsym $mod+F3 exec $terminal -e 'ranger'
 
 # Open specific applications in floating mode
-for_window [class="[Gg]nome-calculator"] floating enable
-for_window [class="[Nn]m-connection-editor"] floating enable
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Pamac-manager"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="[Ff]ile-roller"] floating enable
+#for_window [class="[Gg]nome-calculator"] floating enable
+#for_window [class="[Nn]m-connection-editor"] floating enable
+#for_window [title="alsamixer"] floating enable border pixel 1
+#for_window [class="Galculator"] floating enable border pixel 1
+#for_window [class="GParted"] floating enable border normal
+#for_window [class="Lxappearance"] floating enable sticky enable border normal
+#for_window [class="Manjaro Settings Manager"] floating enable border normal
+#for_window [class="Nitrogen"] floating enable sticky enable border normal
+#for_window [class="Pamac-manager"] floating enable
+#for_window [class="qt5ct"] floating enable sticky enable border normal
+#for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+#for_window [class="[Ff]ile-roller"] floating enable
 
 # Thunderbird floating windows.
-for_window [class="Thunderbird" title="Thunderbird Preferences"] floating enable border normal
-for_window [window_role="EventSummaryDialog"] floating enable border normal
-for_window [window_role="EventDialog"] floating enable border normal
-for_window [window_role="Msgcompose"] floating enable border normal
+#for_window [class="Thunderbird" title="Thunderbird Preferences"] floating enable border normal
+#for_window [window_role="EventSummaryDialog"] floating enable border normal
+#for_window [window_role="EventDialog"] floating enable border normal
+#for_window [window_role="Msgcompose"] floating enable border normal
 
 # Autostart applications
 exec --no-startup-id $dotfiles_path/i3/polkit.sh
@@ -311,71 +312,69 @@ bindsym $mod+shift+p mode $power_mode
 # Pulse Audio controls.
 # See https://faq.i3wm.org/question/3747/enabling-multimedia-keys/?answer=3759#post-id-3759
 # Increase sound volume.
-bindsym XF86AudioRaiseVolume exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -r"
-# Decrease sound volume.
-bindsym XF86AudioLowerVolume exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -l"
-bindsym XF86AudioMute exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -m"
-bindsym $mod+XF86AudioMute exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -c"
-bindsym $mod+F1 exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -c"
-
-# Screen brightness controls.
-bindsym XF86MonBrightnessUp exec $dotfiles_path/X/acpilight/xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec $dotfiles_path/X/acpilight/xbacklight -dec 5 # decrease screen brightness
-
-# Touchpad controls.
-bindsym $mod+shift+t exec $dotfiles_path/X/toggle_touchpad.sh
+#bindsym XF86AudioRaiseVolume exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -r"
+## Decrease sound volume.
+#bindsym XF86AudioLowerVolume exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -l"
+#bindsym XF86AudioMute exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -m"
+#bindsym $mod+XF86AudioMute exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -c"
+#bindsym $mod+F1 exec --no-startup-id "$dotfiles_path/tools/audio_tools.sh -c"
+#
+## Screen brightness controls.
+#bindsym XF86MonBrightnessUp exec $dotfiles_path/X/acpilight/xbacklight -inc 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec $dotfiles_path/X/acpilight/xbacklight -dec 5 # decrease screen brightness
+#
+## Touchpad controls.
+#bindsym $mod+shift+t exec $dotfiles_path/X/toggle_touchpad.sh
 
 # Media player controls
 # Needs https://github.com/acrisci/playerctl/releases
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym $mod+Shift+s exec playerctl play-pause
-bindsym $mod+Shift+d exec playerctl next
-bindsym $mod+Shift+a exec playerctl previous
-bindsym $mod+shift+slash exec $dotfiles_path/tools/vlc_youtube_comment_to_notification.sh
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+#bindsym $mod+Shift+s exec playerctl play-pause
+#bindsym $mod+Shift+d exec playerctl next
+#bindsym $mod+Shift+a exec playerctl previous
+#bindsym $mod+shift+slash exec $dotfiles_path/tools/vlc_youtube_comment_to_notification.sh
 
-exec $dotfiles_path/X/xrandr.sh
+#exec $dotfiles_path/X/xrandr.sh
 exec_always --no-startup-id $dotfiles_path/tools/set-wallpaper.sh
-exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
+#exec --no-startup-id "$dotfiles_path/tools/set-wallpaper.sh startup"
 exec xbindkeys
 
 # Applets.
-exec --no-startup-id nm-applet
-exec --no-startup-id redshift-gtk
-exec --no-startup-id blueman-applet
-exec --no-startup-id "/home/eggerk/.local/share/tresorit/tresorit --hidden"
-exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
+#exec --no-startup-id nm-applet
+#exec --no-startup-id redshift-gtk
+#exec --no-startup-id "udiskie --tray --config=$dotfiles_path/misc/udiskie.yml"
 
 # Start firefox, sleep a while for wifi connection to be ready.
-exec "$dotfiles_path/tools/start-communication.sh"
-exec "i3-msg 'workspace 1; exec firefox --browser'"
-assign [class = "Thunderbird"] $workspace0
-assign [class = "google-chat-nativefier.*"] $workspace0
-for_window [class = "google-chat-nativefier.*"] move to workspace $workspace0
-assign [class = "wrike-nativefier.*"] $workspace0
-for_window [class = "wrike-nativefier.*"] move to workspace $workspace0
+#exec "$dotfiles_path/tools/start-communication.sh"
+#exec "i3-msg 'workspace 1; exec firefox --browser'"
+#assign [class = "Thunderbird"] $workspace0
+#assign [class = "google-chat-nativefier.*"] $workspace0
+#for_window [class = "google-chat-nativefier.*"] move to workspace $workspace0
+#assign [class = "wrike-nativefier.*"] $workspace0
+#for_window [class = "wrike-nativefier.*"] move to workspace $workspace0
 
 # Screenshot
-bindsym --release Print exec "maim -u /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
-bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; maim -u -s /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
-bindsym --release control+Print exec "maim -u -i $(xdotool getactivewindow) /home/eggerk/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release Print exec "maim -u /home/tony/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release Shift+Print exec "notify-send -t 1500 'Select area for screenshot.'; maim -u -s /home/tony/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
+bindsym --release control+Print exec "maim -u -i $(xdotool getactivewindow) /home/tony/Pictures/screenshots/$(date '+%Y-%m-%d-%H%M%S').png"
 
 # Keyboard layout.
-exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
-# Do it again to make sure.
-exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
+#exec_always --no-startup-id "setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
+## Do it again to make sure.
+#exec --no-startup-id "sleep 5; setxkbmap -model pc105 -layout us_umlaut -option caps:escape"
 
 # Disallow notifications to take focus.
 no_focus [class="Xfce4-notifyd"]
 
 # Compton
-exec_always --no-startup-id killall compton; compton --backend glx --paint-on-overlay --glx-no-stencil \
-                             --vsync opengl-swc --unredir-if-possible -b \
-                             --config $dotfiles_path/compton/compton.conf
+#exec_always --no-startup-id killall compton; compton --backend glx --paint-on-overlay --glx-no-stencil \
+#                             --vsync opengl-swc --unredir-if-possible -b \
+#                             --config $dotfiles_path/compton/compton.conf
 
 # Disable caps lock because sometimes it reenables itself for some reason.
-exec_always --no-startup-id "python3 -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
+#exec_always --no-startup-id "python3 -c 'from ctypes import *; X11 = cdll.LoadLibrary(\"libX11.so.6\"); display = X11.XOpenDisplay(None); X11.XkbLockModifiers(display, c_uint(0x0100), c_uint(2), c_uint(0)); X11.XCloseDisplay(display)'"
 
-exec_always --no-startup-id $dotfiles_path/X/remap_keys
+#exec_always --no-startup-id $dotfiles_path/X/remap_keys

@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/eggerk/.oh-my-zsh
+export ZSH=/home/tony/.config/zsh/oh-my-zsh
 export TERM=xterm-256color
 
 # Uncomment the following line to use case-sensitive completion.
@@ -13,7 +13,7 @@ export TERM=xterm-256color
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -22,7 +22,7 @@ export TERM=xterm-256color
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -35,7 +35,7 @@ export TERM=xterm-256color
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="dd.mm.yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -57,15 +57,17 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_COLOR_SCHEME='dark'
 
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='black'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   prompt_color="red"
-  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode host dir vcs)
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode host dir virtualenv anaconda vcs)
 else
-  prompt_color="white"
-  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode dir vcs)
+  prompt_color="red"
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(vi_mode host dir virtualenv anaconda vcs)
 fi
 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs time custom_ckws)
@@ -80,15 +82,17 @@ POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='0'
 POWERLEVEL9K_STATUS_VERBOSE=true
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
-POWERLEVEL9K_CUSTOM_CKWS="echo ${CATKIN_WS/\/home\/eggerk*\//}"
+POWERLEVEL9K_CUSTOM_CKWS="echo ${CATKIN_WS/\/home\/tony*\//}"
 POWERLEVEL9K_CUSTOM_CKWS_BACKGROUND="blue"
 
 # User configuration
-export GOPATH="/home/eggerk/software/go"
-export PATH="$PATH:$GOPATH/bin"
+#export GOPATH="/home/eggerk/software/go"
+#export PATH="$PATH:$GOPATH/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zshrcaddition
+[[ $TERM != "screen" ]] && exec tmux -2
 
 if which nvim > /dev/null ; then
   export EDITOR=nvim
@@ -123,7 +127,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/dotfiles/ros/setupros.sh
+#source ~/dotfiles/ros/setupros.sh
 
 alias vim=nvim
 alias -s cc='nvim'
@@ -132,8 +136,8 @@ alias -s h='nvim'
 alias -s patch='nvim'
 export PATH="/usr/lib/ccache:$PATH"
 
-alias octave-gui='octave'
-alias octave='octave-cli'
+#alias octave-gui='octave'
+#alias octave='octave-cli'
 alias cpr='rsync -azP'
 alias git_amend_no_edit='git commit -a --amend --no-edit'
 
@@ -186,6 +190,9 @@ fi
 alias xclip_mid='xclip -selection primary'
 alias xclip_cp='xclip -selection clipboard'
 
+# keyboard
+alias fixkeyboard='stty sane'
+
 export PATH="$HOME/.yarn/bin:$PATH"
 
 alias kitty_image='kitty +kitten icat'
@@ -210,3 +217,19 @@ function preexec_fg_title {
 }
 
 preexec_functions+=(preexec_fg_title)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/tony/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/tony/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/tony/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/tony/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
